@@ -10,7 +10,7 @@ jobs:
 
         steps:
             - name: list files
-            - run: ls -ltra
+              run: ls -ltra
 
             - name: run shell script
-            - run: echo "Hello from first wf"
+              run: echo "Hello from first wf"
