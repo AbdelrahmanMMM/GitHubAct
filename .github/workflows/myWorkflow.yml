@@ -11,6 +11,12 @@ jobs:
         steps:
             - name: list files
               run: ls -ltra
+            
+            - name: Checkout
+              uses: actions/checkout@v6.0.2
 
             - name: run shell script
-              run: echo "Hello from first wf"
+              run: 
+                |
+                chomod +x script.sh
+                ./script.sh
