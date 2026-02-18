@@ -27,7 +27,8 @@ jobs:
 
         steps:
             - name: Download artifact
-            - uses: actions/download-artifact@v5
+              uses: actions/download-artifact@v5
               with:
                 name: my-artifact
-            - run: ls cat hello.txt
+            - name: Showing file content
+              run: ls cat hello.txt
