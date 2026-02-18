@@ -1,0 +1,36 @@
+name: ETL
+
+on: 
+    pull_request:
+    workflow_dispatch:
+    push:
+
+
+jobs:
+    run-ETL:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v6.0.2
+            
+            - name: Setup Python
+              uses: actions/setup-python@v6.2.0
+
+            - name: Run Python Script
+              run: python mysubdir/read_csv.py
+
+            - name: Docker Login
+              uses: docker/login-action@v3.7.0    
+              with:
+                username: ${{ secrets.MY_DOCKER_USERNAME }}
+                password: ${{ secrets.MY_DOCKER_PASSWORD }}
+
+
+            - name: Build and push
+              uses: docker/build-push-action@v6
+              with:
+                context: ./mysubdir
+                file: ./mysubdir/Dockerfile
+                push: true
+                tags: ${{ secrets.MY_DOCKER_USERNAME }}/app3:latest
