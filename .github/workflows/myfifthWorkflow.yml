@@ -31,4 +31,6 @@ jobs:
               with:
                 name: my-artifact
             - name: Showing file content
-              run: ls cat hello.txt
+              run: | 
+                ls 
+                cat hello.txt
