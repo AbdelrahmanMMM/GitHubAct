@@ -1,7 +1,7 @@
 import csv
 
 # open the csv file
-with open('data.csv', mode='r', newline='', encoding='utf-8') as file:
+with open('Book1.csv', mode='r', newline='', encoding='utf-8') as file:
     reader = csv.reader(file)
     
     # loop through each row
