@@ -3,7 +3,7 @@ name: ETL
 on: 
     pull_request:
     workflow_dispatch:
-    push:
+    
 
 
 jobs:
@@ -33,4 +33,4 @@ jobs:
                 context: ./mysubdir
                 file: ./mysubdir/Dockerfile
                 push: true
-                tags: ${{ secrets.MY_DOCKER_USERNAME }}/app3:latest
+                tags: ${{ secrets.MY_DOCKER_USERNAME }}/app4:latest
