@@ -1,0 +1,27 @@
+name: Matrix-Strategy
+
+on:
+    push:
+        branches: main
+
+jobs: 
+    run-matrix:
+        runs-on: ${{matrix.os}}
+        strategy:
+            matrix:
+                os: [ubuntu-latest, macos-latest, ubuntu-22.04]
+                node: [16, 17]
+
+        steps:
+            - name: print new info
+              run: |
+                echo "running on os ${{matrix.os}}"
+                echo "node version ${{matrix.node}}"
+            
+            - name: setup node
+              uses: actions/setup-node@v4
+              with:
+                node-version: ${{matrix.node}}
+
+            - name: run linux commands
+              run: echo "hello from matrix job"
