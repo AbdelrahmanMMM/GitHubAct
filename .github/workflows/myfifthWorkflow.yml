@@ -1,0 +1,33 @@
+name: Artifact Demo
+
+on: workflow_dispatch
+
+jobs:
+
+    create-artifact:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v6.0.2
+
+            - name: Create file
+              run: |
+                echo "Hello from GitHub Actions" > hello.txt
+
+            - name: Upload a Build Artifact
+              uses: actions/upload-artifact@v4
+              with:
+                name: my-artifact
+                path: hello.txt
+    
+    download-artifact:
+        runs-on: ubuntu-latest
+        needs: create-artifact
+
+        steps:
+            - name: Download artifact
+            - uses: actions/download-artifact@v5
+              with:
+                name: my-artifact
+            - run: ls cat hello.txt
