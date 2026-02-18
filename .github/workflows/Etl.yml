@@ -33,4 +33,4 @@ jobs:
                 context: ./mysubdir
                 file: ./mysubdir/Dockerfile
                 push: true
-                tags: ${{ secrets.MY_DOCKER_USERNAME }}/app4:latest
+                tags: ${{ secrets.MY_DOCKER_USERNAME }}/app5:latest
