@@ -23,8 +23,11 @@ jobs:
               python -m pip install --upgrade pip
               pip install -r requirements.txt
 
-          - name: run pytest
-            run: pytest
+          - name: Run Pytest
+            run: pytest tests/
+            env:
+              PYTHONPATH: ${{ github.workspace }}
+
 
           - name: install dbt
             run: |
