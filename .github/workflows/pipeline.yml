@@ -65,3 +65,12 @@ jobs:
             run: |
               cd dbt_project
               dbt test
+          - name: Show dbt model results
+            run: |
+              python - <<EOF
+              import duckdb
+              con = duckdb.connect("/home/runner/work/GitHubAct/GitHubAct/my.duckdb")
+              df = con.execute("SELECT * FROM my_model").fetchdf()
+              print(df)
+              con.close()
+              EOF
