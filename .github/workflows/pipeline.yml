@@ -44,7 +44,18 @@ jobs:
                 target: dev
               EOF
 
-        
+          - name: Load CSV into DuckDB
+            run: |
+              python - <<EOF
+              import duckdb
+              con = duckdb.connect("my.duckdb")
+              con.execute("""
+                  CREATE OR REPLACE TABLE table_name AS
+                  SELECT * FROM read_csv_auto('data/input.csv');
+              """)
+              con.close()
+              EOF
+                
           - name: run dbt debug
             run: |
               cd dbt_project
