@@ -31,7 +31,19 @@ jobs:
 
           - name: install dbt
             run: |
-              pip install dbt-core dbt-sqlite
+              pip install dbt-core dbt-sqlite dbt-duckdb
+          - name: Create dbt profile
+            run: |
+              mkdir -p ~/.dbt
+              cat <<EOF > ~/.dbt/profiles.yml
+              my_profile:
+                outputs:
+                  dev:
+                    type: duckdb
+                    path: /home/runner/work/GitHubAct/GitHubAct/my.duckdb
+                target: dev
+              EOF
+
         
           - name: run dbt debug
             run: |
