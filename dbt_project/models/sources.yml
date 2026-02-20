@@ -2,5 +2,6 @@ version: 2
 
 sources:
   - name: source_name
+    schema: main
     tables:
       - name: table_name
